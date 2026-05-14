@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Welcome to Python Flask World 14.0'
+    return 'Welcome to Python Flask World 15.0'
 
 
 if __name__ == '__main__':
