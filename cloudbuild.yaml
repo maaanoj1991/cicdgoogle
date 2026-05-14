@@ -13,7 +13,7 @@ steps:
       - 'push'
       - 'asia-south1-docker.pkg.dev/gcpdevops-495507/my-repo/my-python-app:$BUILD_ID'
 
-  # Deploy
+  # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
@@ -31,6 +31,9 @@ steps:
 images:
   - 'asia-south1-docker.pkg.dev/gcpdevops-495507/my-repo/my-python-app:$BUILD_ID'
 
+# Add your custom service account here
+serviceAccount: 'projects/gcpdevops-495507/serviceAccounts/757219722757-compute@developer.gserviceaccount.com'
+
 options:
   logging: CLOUD_LOGGING_ONLY
-  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+  # Remove defaultLogsBucketBehavior when using CLOUD_LOGGING_ONLY
