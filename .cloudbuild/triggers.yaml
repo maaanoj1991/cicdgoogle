@@ -1,5 +1,5 @@
 triggers:
-  - name: My-trigger
+  - name: My-trigger-love
     project: gcpdevops-495507
     configFilePath: cloudbuild.yaml
     eventType: push
