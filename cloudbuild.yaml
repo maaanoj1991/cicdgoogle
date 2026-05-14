@@ -1,0 +1,20 @@
+steps:
+  # 1. Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/gcpdevops-495507/my-repo/my-python-app:$BUILD_ID', '.']
+
+  # 2. Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/gcpdevops-495507/my-repo/my-python-app:$BUILD_ID']
+
+  # 3. Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: ['run', 'deploy', 'my-python-service',
+           '--image', 'asia-south1-docker.pkg.dev/gcpdevops-495507/my-repo/my-python-app:$BUILD_ID',
+           '--region', 'asia-south1',
+           '--platform', 'managed',
+           '--allow-unauthenticated']
+
+images:
+  - 'asia-south1-docker.pkg.dev/gcpdevops-495507/my-repo/my-python-app:$BUILD_ID'
