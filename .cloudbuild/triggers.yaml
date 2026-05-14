@@ -1,6 +1,0 @@
-triggers:
-  - name: My-trigger-love
-    project: gcpdevops-495507
-    configFilePath: cloudbuild.yaml
-    eventType: push
-    serviceAccount: projects/gcpdevops-495507/serviceAccounts/757219722757-compute@developer.gserviceaccount.com
